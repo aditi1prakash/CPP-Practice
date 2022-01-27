@@ -1,0 +1,95 @@
+// Standard (system) header files
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+typedef enum
+{
+	E_OK,
+	E_OUTOFRANGE,
+	E_INVALID
+} RC_t;
+
+static int testCases {0};
+static int greenCost {0};
+static int purpleCost {0};
+static int numOfParticipants {0};
+static int userStatus {0};
+static vector<vector<int>> userStatus_vect;
+static int result {0};
+
+static const int MIN_RANGE = 1;
+static const int MAX_RANGE = 10;
+
+RC_t readInput ();
+int compute ();
+void printOutput (const int result);
+
+int main() {
+
+	setvbuf(stdout, NULL, _IONBF, 0);
+
+	readInput();
+
+	result = compute();
+
+	printOutput(result);
+}
+
+RC_t readInput()
+{
+	RC_t err = E_OK;
+
+	/* Read number of testcases */
+	cout << "Test Cases: " << endl;
+	cin >> testCases;
+
+	if(testCases < MIN_RANGE || testCases > MAX_RANGE)
+	{
+		err = E_OUTOFRANGE;
+	}
+
+	/* Read cost of balloons */
+	cout << "Cost of balloons: " << endl;
+	cin >> greenCost >> purpleCost;
+
+	/* Read number of participants*/
+	cout << "Number of participants: " << endl;
+	cin >> numOfParticipants;
+
+	if(numOfParticipants < MIN_RANGE || numOfParticipants > MAX_RANGE)
+	{
+		err = E_OUTOFRANGE;
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < numOfParticipants; j++)
+		{
+			cout << "User status [" << i << "][" << j  << "]: " << endl;
+			cin >> userStatus;
+			userStatus_vect[i].push_back(userStatus);
+		}
+	}
+
+	return err;
+}
+
+int compute()
+{
+	int res1, res2;
+
+	for(int j = 0; j < numOfParticipants; j++)
+	{
+		res1 = (greenCost * userStatus_vect[0][j]) + (purpleCost * userStatus_vect[1][j]);
+		res2 = (purpleCost * userStatus_vect[0][j]) + (greenCost * userStatus_vect[1][j]);
+	}
+
+	return ((res1 < res2) ? res1 : res2);
+}
+
+void printOutput(const int result)
+{
+	cout << result;
+}
