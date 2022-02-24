@@ -1,6 +1,6 @@
-/.metadata/
-/.settings/
-/Debug/
+**/.metadata/
+**/.settings/
+**/Debug/
 .cproject
 .project
 .gdbinit
