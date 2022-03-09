@@ -164,7 +164,7 @@ Mystring Mystring::operator*(const int value)
 {
 	char *buff = new char[(std::strlen(str) * value) + 1];
 
-	std::strcpy(buff,str);
+	std::strcpy(buff,str);						//std::strcpy (buff, ""); for loop can be just (i < value)
 	for(size_t i = 0; i < value - 1; i++)
 	{
 		std::strcat(buff, str);
@@ -174,6 +174,16 @@ Mystring Mystring::operator*(const int value)
 	delete [] buff;
 
 	return temp;
+
+	/* More efficient and readable
+	 * ------------------------------
+	 * Mystring temp;
+	 * for (int i = 0; i <= n; i++)
+	 * {
+	 * 		temp = temp + *this;			Use concatenation operator (already overloaded)
+	 * }									multiple additions == multiplication
+	 * return temp;
+	 */
 }
 
 //Stream insertion operator
@@ -204,7 +214,7 @@ std::istream& operator>>(std::istream &in, Mystring &obj)
 }
 
 //Compound operator
-Mystring Mystring::operator+=(const Mystring &obj)
+Mystring& Mystring::operator+=(const Mystring &obj)
 {
 	//Concatenate (already overloaded) rhs object with the existing object and assign it to the same object
 	*this = *this + obj;
@@ -212,12 +222,31 @@ Mystring Mystring::operator+=(const Mystring &obj)
 	return *this;
 }
 
-Mystring Mystring::operator*=(const int value)
+Mystring& Mystring::operator*=(const int value)
 {
 	//Repeat (already overloaded) rhs times the exising object and assign it to the same object
 	*this = *this * value;
 
 	return *this;
+}
+
+//Pre increment - convert to upper case
+Mystring& Mystring::operator++()
+{
+	for(size_t i = 0; i < std::strlen(this->str); i++)
+	{
+		str[i] = toupper(str[i]);				//Convert each item to upper case and store it back in the same object
+	}
+	return *this;
+}
+
+//Post increment - convert to upper case
+Mystring Mystring::operator++(int)
+{
+	Mystring temp{*this};		// Make a copy
+	operator++();				// Increment the current object
+
+	return temp;				// Return the previous value of the object
 }
 
 Mystring::~Mystring()

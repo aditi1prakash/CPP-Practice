@@ -9,6 +9,8 @@ using namespace std;
 
 int main ()
 {
+
+	cout << boolalpha << endl;
 	Mystring empty;
 
 	//Overloaded constructor
@@ -63,6 +65,14 @@ int main ()
 	blue = "blue";
 	blue *= 4;
 	cout << blue << endl;
+
+	//Pre and post increment
+	++blue;
+	 cout << blue << endl;
+
+	 cout << red++ << endl;
+	 Aditi = red;
+	 cout << Aditi << " " << red << endl;
 
 	return 0;
 }

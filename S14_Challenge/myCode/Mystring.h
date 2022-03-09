@@ -63,9 +63,15 @@ public:
 	Mystring operator*(const int value);
 
 	//Compound operator
-	Mystring operator+=(const Mystring &obj);
+	Mystring& operator+=(const Mystring &obj);
 
-	Mystring operator*=(const int value);
+	Mystring& operator*=(const int value);
+
+	//Pre increment - convert to upper case
+	Mystring& operator++();
+
+	//Post increment - convert to upper case
+	Mystring operator++(int);
 
 	//Stream insertion
 	friend std::ostream& operator<<(std::ostream &os, const Mystring &obj);
