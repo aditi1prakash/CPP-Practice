@@ -1,0 +1,51 @@
+/*
+ * Account.cpp
+ *
+ *  Created on: 01-Mar-2022
+ *      Author: Aditi Prakash
+ */
+
+#include "Account.h"
+
+Account::Account(std::string name, double balance)
+	:name{name}, balance{balance}
+{}
+
+bool Account::deposit(double amount)
+{
+	if (amount < 0)
+		return false;
+	else
+	{
+		balance = balance + amount;
+		return true;
+	}
+}
+
+bool Account::withdraw(double amount)
+{
+	if(balance - amount > 0)
+	{
+		balance = balance - amount;
+		return true;
+	}
+	else
+	{
+		std::cout << "Insufficient funds" << std::endl;
+		return false;
+	}
+}
+
+double Account::get_balance() const
+{
+	return balance;
+}
+
+void Account::print(std::ostream &os) const
+{
+	os << "[Account: " << name << ": " << balance << "]" << std::endl;
+}
+
+Account::~Account()
+{}
+
