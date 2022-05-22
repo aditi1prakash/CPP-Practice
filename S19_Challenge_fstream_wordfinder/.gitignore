@@ -1,0 +1,7 @@
+**/.metadata/
+**/.settings/
+**/Debug/
+.cproject
+.project
+.gdbinit
+**/.vscoode/
