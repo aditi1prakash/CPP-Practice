@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int calculateScore (std::string studentSolution, std::string solutionString)
+int calculateScore (const std::string &studentSolution, const std::string &solutionString)
 {
 	int score {};
 
@@ -30,19 +30,19 @@ void printHeader()
 {
 	//Formatting for printing the output on the console
 	cout << setw(20) << left << "Student"
-		 << setw(20) << "Score" << endl;
+		 << setw(10) << "Score" << endl;
 }
 
 void printDivider()
 {
-	cout << setw(40) << setfill ('-') << "";
+	cout << setw(30) << setfill ('-') << "";
 	cout << setfill (' ') << " " << endl;
 }
 
-void printStudent(std::string studentName, int score)
+void printStudent(const std::string &studentName, const int &score)
 {
 	cout << setw(20) << left << studentName
-		 << setw(20) << left << score << endl;
+		 << setw(10) << left << score << endl;
 }
 
 int main ()
