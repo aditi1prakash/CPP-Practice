@@ -1,4 +1,4 @@
-# Section 19 Challenge - I/O Manipulation #
+# Section 19 Challenge 1 - I/O Manipulation #
 
 In this challenge you are to display the provided data in a nicely formatted table. 
 
