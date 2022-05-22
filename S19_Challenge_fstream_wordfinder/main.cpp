@@ -23,17 +23,23 @@ int main ()
     std::cout << "Enter the substring to search for: ";
     std::cin >> subString;
 
+    //Read each word
     while(in_file >> word)
-    {
+    {   
+        //Count the total number of words
         wordCount++;
 
+        //Search the substring
         found = word.find(subString);
+
+        //Increment substring count when found
         if(found != std::string::npos)
         {
             subStringCount++;
         }
     }
 
+    //Print the result
     std::cout << wordCount << " words were searched..." << std::endl;
     std::cout << "The substring " << subString << " was found " << subStringCount << " times." << std::endl;
 
