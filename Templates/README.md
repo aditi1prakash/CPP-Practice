@@ -1,4 +1,4 @@
-#Template exercises#
+# Template exercises #
 
 Revise Template concepts in C++
 
