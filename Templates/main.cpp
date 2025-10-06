@@ -3,15 +3,17 @@
 
 using namespace std;
 
-void main {
+int main() {
 
 	Maximum obj1;
 
-	//Integers
+	// Integers
 	int Iresult = obj1.max(5, 10);
-	std::cout << "Integer result: " << Iresult << std::endl;
+	cout << "Integer result: " << Iresult << endl;
 
-	//Floating point numbers
-	float Fresult = obj1.max(25.9, 13.4);
-	std::cout << "Floating point result: " << Fresult << std::endl;
+	// Floating point numbers
+	float Fresult = obj1.max(25.9f, 13.4f);
+	cout << "Floating point result: " << Fresult << endl;
+
+	return 0;
 }

@@ -6,12 +6,14 @@ namespace {
 	class Maximum {
 	public:
 		//Constructor
-		Maximum ();
 
 		//Methods
-		<T> max (<T> a, <T> b);
+		template<typename T>
+		T max(const T& a, const T& b)
+		{
+			return (a > b) ? a : b;
+		}
 
 		//Destructor
-		~Maximum ();
 	};
 }
