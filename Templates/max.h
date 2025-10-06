@@ -6,8 +6,14 @@ namespace {
 	class Maximum {
 	public:
 		//Constructor
+		Maximum () = default;
 
 		//Methods
+		/*!
+		 * @brief					-	Returns the bigger value of the two arguments
+		 * @param[in] const T& a	-	First argument
+		 * @param[in] const T& b	- 	Second argument
+		 * @return		T			-	Return of type T */
 		template<typename T>
 		T max(const T& a, const T& b)
 		{
@@ -15,5 +21,6 @@ namespace {
 		}
 
 		//Destructor
+		~Maximum () = default;
 	};
 }
